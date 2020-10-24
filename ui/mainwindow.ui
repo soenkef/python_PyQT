@@ -14,68 +14,57 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QFormLayout" name="formLayout">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>Python - Aktion!</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="tableWidget">
+      <row>
+       <property name="text">
+        <string>0</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Stadt</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Einwohnerzahl</string>
+       </property>
+      </column>
       <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>K&amp;ouml;rpergr&amp;ouml;&amp;szlig;e in m:</string>
-        </property>
-        <property name="textFormat">
-         <enum>Qt::RichText</enum>
-        </property>
-       </widget>
+       <property name="text">
+        <string>Muenchen</string>
+       </property>
       </item>
       <item row="0" column="1">
-       <widget class="QDoubleSpinBox" name="height">
-        <property name="minimum">
-         <double>0.100000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>2500000.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.010000000000000</double>
-        </property>
-       </widget>
+       <property name="text">
+        <string>1230000</string>
+       </property>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Gewicht in kg:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="calculate">
-        <property name="text">
-         <string>BMI berechnen!</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Dein BMI ist: </string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLabel" name="result">
-        <property name="text">
-         <string>20</string>
-        </property>
-       </widget>
+       <property name="text">
+        <string>Berlin</string>
+       </property>
       </item>
       <item row="1" column="1">
-       <widget class="QSpinBox" name="weight">
-        <property name="minimum">
-         <number>1</number>
-        </property>
-       </widget>
+       <property name="text">
+        <string>3000000</string>
+       </property>
       </item>
-     </layout>
+     </widget>
     </item>
    </layout>
   </widget>
