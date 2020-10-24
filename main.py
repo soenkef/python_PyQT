@@ -12,9 +12,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # self.setWindowTitle("BMI-Rechner")
+        self.setWindowTitle("Test-Tabelle")
 
+        self.ui.tableWidget.cellChanged.connect(self.onCellChanged)
         self.ui.pushButton.clicked.connect(self.onPushButtonClick)
+
+    def onCellChanged(self, row, col):
+        print(row)
+        print(col)
 
     def onPushButtonClick(self):
         row = self.ui.tableWidget.rowCount()
