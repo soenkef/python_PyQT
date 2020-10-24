@@ -20,6 +20,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.tableWidget.cellChanged.connect(self.onCellChanged)
         self.ui.addRow.clicked.connect(self.onAddButtonClick)
         self.ui.saveFile.clicked.connect(self.onSaveButtonClick)
+        self.ui.actionSave.triggered.connect(self.onSaveButtonClick)
 
     def readCsvFile(self, filename):
         with open(filename, "r", newline='', encoding="utf-8") as csvfile:
