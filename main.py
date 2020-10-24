@@ -1,5 +1,5 @@
 import sys
-from qtpy import QtWidgets
+from qtpy import QtWidgets, QtCore
 
 from ui.mainwindow import Ui_MainWindow
 
@@ -9,10 +9,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent = None):
         super().__init__(parent)
 
-        self.setWindowTitle("Studierendenverwaltung")
-
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.setWindowTitle("Studierendenverwaltung")
 
         self.ui.label_3.hide()
         self.ui.result.hide()
@@ -20,7 +20,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.calculate.clicked.connect(self.on_button_click)
 
     def on_button_click(self):
-        #self.ui.calculate.hide()
+        # self.ui.calculate.hide()
 
         weight = self.ui.weight.value()
         height = self.ui.height.value()
