@@ -17,8 +17,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.pushButton.clicked.connect(self.onPushButtonClick)
 
     def onPushButtonClick(self):
-        self.ui.tableWidget.setItem(0, 0, QtWidgets.QTableWidgetItem("Budapest"))
-        self.ui.tableWidget.setItem(0, 1, QtWidgets.QTableWidgetItem("9872345234"))
+        row = self.ui.tableWidget.rowCount()
+        self.ui.tableWidget.insertRow(row)
+
+        self.ui.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem("Budapest"))
+        self.ui.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem("9872345234"))
         print("Button wurde geklickt!")
 
 window = MainWindow()
