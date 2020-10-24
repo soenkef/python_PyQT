@@ -1,4 +1,5 @@
 import sys
+import csv
 from qtpy import QtWidgets, QtCore
 
 from ui.mainwindow import Ui_MainWindow
@@ -12,22 +13,57 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.setWindowTitle("Test-Tabelle")
+        self.setWindowTitle("Studierendenverwaltung")
+
+        with open('students.csv', newline='') as csvfile:
+            reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in reader:
+                count = self.ui.tableWidget.rowCount()
+                self.ui.tableWidget.insertRow(count)
+                name = row[1]
+                prename = row[0]
+                course = row[2]
+                self.ui.tableWidget.setItem(count, 0, QtWidgets.QTableWidgetItem(name))
+                self.ui.tableWidget.setItem(count, 1, QtWidgets.QTableWidgetItem(prename))
+                self.ui.tableWidget.setItem(count, 2, QtWidgets.QTableWidgetItem(course))
+
+                print(prename)
 
         self.ui.tableWidget.cellChanged.connect(self.onCellChanged)
-        self.ui.pushButton.clicked.connect(self.onPushButtonClick)
+        self.ui.addRow.clicked.connect(self.onAddButtonClick)
+        self.ui.saveFile.clicked.connect(self.onSaveButtonClick)
 
     def onCellChanged(self, row, col):
         print(row)
         print(col)
+        output = self.ui.tableWidget.item(row, col)
 
-    def onPushButtonClick(self):
-        row = self.ui.tableWidget.rowCount()
-        self.ui.tableWidget.insertRow(row)
+        print(output.text())
 
-        self.ui.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem("Budapest"))
-        self.ui.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem("9872345234"))
-        print("Button wurde geklickt!")
+    def onAddButtonClick(self):
+        count = self.ui.tableWidget.rowCount()
+        self.ui.tableWidget.insertRow(count)
+
+        print("onAddButtonClick() gedrückt")
+
+    def onSaveButtonClick(self):
+        print("onSaveButtonClick() gedrückt")
+
+        count = self.ui.tableWidget.rowCount()
+        
+        with open('students.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+
+            for i in range(0, count):
+                name = self.ui.tableWidget.item(i, 0)
+                prename = self.ui.tableWidget.item(i, 1)
+                course = self.ui.tableWidget.item(i, 2)
+                print(prename.text() + "," + name.text() + "," + course.text())
+
+                writer.writerow([prename.text(), name.text(), course.text()])
+
+
 
 window = MainWindow()
 
